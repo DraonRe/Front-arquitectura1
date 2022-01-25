@@ -1,0 +1,89 @@
+<div class ="card-body text-primary">
+    <div class="card-header"><h2>{{titulo}}</h2></div>
+    <div class="card-body">
+        <div  class="card-header">
+            <button type="button" class="btn btn-outline-primary" routerLink="/clientes">Regresar</button>
+          </div>
+          <div  class="card-header">
+            <h2>Vendedor</h2> 
+          
+         <div class="container">
+             <div class="row">
+                 <div class="col-sm">
+                    <div >
+                        <ul *ngIf="cliente" class="list-group list-group text-dark mb-3">
+                            <li class="list-group-item"><b>Id: </b>{{cliente.id}}</li>
+                            <li class="list-group-item"><b>Nombre: </b>{{cliente.nombre}}</li>
+                            <li class="list-group-item"><b>Apellido: </b>{{cliente.apellido}}</li>
+                            <li class="list-group-item"><b>Nivel: </b>{{cliente.nivel}}</li>
+                            <li class="list-group-item"><b>Documento: </b>{{cliente.documento}}</li>
+                            <li class="list-group-item"><b>Direccion: </b>{{cliente.direccion}}</li>
+                            <li class="list-group-item"><b>Telefono: </b>{{cliente.telefono}}</li>
+                            <li class="list-group-item"><b>Correo: </b>{{cliente.email}}</li>
+                            <li class="list-group-item"><b>Id Referido: </b>{{cliente.id_Refereido}}1</li>
+                            <li class="list-group-item"><b>Fecha de registro: </b>{{cliente.createAt}}</li>
+                            
+                        </ul>
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                                <input (change)="seleccionarImagen($event)" type="file" class="custom-file-input" id="inputGroupFileAddon04" aria-describedby="inputGroupFileAddon04">
+                                <label class="custom-file-label" for="inputGroupFileAddon04">Seleccionar Foto</label>
+                            </div>
+                            <div class="input-group-append">
+                                <button (click)="subirFoto()" [disabled]="!imagenSeleccionada" class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Subir Foto</button>
+                            </div>        
+                        </div>
+                     </div>
+                 </div>
+                 <div class="col-sm">
+                    <img *ngIf="cliente?.foto" src="http://localhost:8080/api/uploads/img/{{cliente.foto}}" alt="{{cliente.foto}}" class="img-thumbnail rounded">
+                 </div>
+
+             </div>
+
+             
+
+         </div>
+
+         <div class="row">
+           
+            <td><button type="button" class="btn btn-success btn-sm" [routerLink]="['/facturas/form',cliente.id]">Crear factura</button></td>
+            
+         </div>
+
+         <div class="row">
+             <div class="alert alert-info my-4" *ngIf="cliente.facturas.length==0">
+                 No hay facturas asignadas para el vendedor {{cliente.nombre}} {{cliente.apellido}}
+             </div>
+            <table class="table table-bordered table-striped my-4" 
+            *ngIf="cliente.facturas.length>0">
+                
+                <thead>
+                    <tr>
+                        <th>Id Factura</th>
+                        <th>Descripcion</th>
+                        <th>Fecha</th>
+                        <th>Total</th>
+                        <th>Detalle</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let factura of cliente.facturas">
+                        <td>{{factura.id}}</td>
+                        <td>{{factura.descripcion}}</td>
+                        <td>{{factura.createAt}}</td>
+                        <td>{{factura.total}}</td>
+                        <td><button class="btn btn-primary btn-sm" type ="button"
+                            [routerLink]="['/facturas',factura.id]">Ver</button></td>
+                            <td><button class="btn btn-danger btn-sm" type="button" (click)="eliminar(factura)">Eliminar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+         </div>
+
+          </div>
+    </div>
+          
+
+</div>

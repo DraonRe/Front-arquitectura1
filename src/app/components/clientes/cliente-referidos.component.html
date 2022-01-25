@@ -1,0 +1,33 @@
+
+
+<div class="card border-primary mb-3">
+    <div class="card-header"><h2>{{titulo}}</h2></div>
+    <div class="card-body text-primary">
+        <button class="btn btn-outline-primary my-2" routerLink="/clientes/form" >Crear Vendedor</button>
+        <table class="table-dark table table-striped ">
+            <thead class="table-dark">
+                <tr>
+                    
+                    <th>Nombre</th>
+                    <th>Nivel</th>
+                    <th>Documento</th>
+                    <th>Direccion</th>
+                    <th>Ver</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cliente of lista">
+                 
+                    <td>{{cliente.nombre}}</td>
+                    <td>{{cliente.nivel}}</td>
+                    <td>{{cliente.documento}}</td>
+                    <td>{{cliente.direccion}}</td>
+                    <td><button class="btn btn-outline-primary" routerLink="/clientes/detalle/{{cliente.id}}">  Ver</button></td>
+                   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

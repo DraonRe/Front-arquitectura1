@@ -1,0 +1,15 @@
+    .container {
+        height: 40vh;
+        width: 100vw;
+        background-color: #ffff;
+        text-align: center;
+        position: relative;
+    }
+
+    .container2 {
+        height: 5vh;
+        width: 50vw;
+        background-color: #ffff;
+        text-align: center;
+        position: relative;
+    }

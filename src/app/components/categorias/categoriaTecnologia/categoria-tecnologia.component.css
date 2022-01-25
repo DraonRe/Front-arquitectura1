@@ -1,0 +1,14 @@
+.container {
+    height: 60vh;
+    width: 100vw;
+    background-color: #ffff;
+    text-align: center;
+    position: relative;
+}
+.container2 {
+    height: 0vh;
+    width: 100vw;
+    background-color: #ffff;
+    text-align: center;
+    position: relative;
+}

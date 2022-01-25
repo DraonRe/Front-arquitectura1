@@ -1,0 +1,61 @@
+<div class="card border-primary mb-3">
+    <div class="card-header"><h2>{{titulo}}</h2></div>
+    <div class="card-body text-primary">
+        
+        <div class="my-2 text-left">
+            <button class="btn btn-rounded btn-primary" type="button" routerLink="/clientes/form">Crear Vendedor</button>
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Fecha</th>
+                    <th>Crear Factura</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                    <th>Clientes Referidos</th>
+
+                    
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cliente of clientes">
+                    <td><button type="button" [routerLink]="['/clientes/detalle',cliente.id]" class="btn btn-success btn-sm">{{cliente.id}}</button></td>
+                    
+                    <td>{{cliente.nombre}}</td>
+                    <td>{{cliente.apellido}}</td>
+                    <td>{{cliente.email}}</td>
+                    <td>{{cliente.createAt | date:'yyyy-MM-dd'}}</td>
+                    <td>
+                        <button type="button" class="btn btn-success btn-sm" [routerLink]="['/facturas/form',cliente.id]">Crear Factura</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-success btn-sm" [routerLink]="['/clientes/referidos',cliente.id]">Ver Referidos</button>
+                    </td>
+
+                    
+
+                    <td>
+                        <button type="button" name="button" [routerLink]="['/clientes/form',cliente.id]" class="btn btn-primary">Editar</button>
+                    </td>
+
+                    <td>
+                        <button class="btn btn-danger btn-sm" (click)="eliminar(cliente)">
+                            Eliminar
+                        </button>
+                    </td>
+
+
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

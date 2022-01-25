@@ -1,0 +1,62 @@
+<div class="card bg-light" >
+    <div class="card-header">{{titulo}}:{{factura.descripcion}}</div>
+    <div class="card-body">
+        <h4 class="card-title">
+            <a routerLink="/clientes" routerLinkActive="active" class="btn btn-light btn-xs">&laquo; volver</a>
+        </h4>
+
+        <ul class="list-group list-group text-dark mb-3">
+            <li class="list-group-item list-group-item-primary">Datos del Vendedor</li>
+            <li class="list-group-item"><b>Nombre: </b>{{factura.cliente.nombre}}</li>
+            <li class="list-group-item"><b>Apellido: </b>{{factura.cliente.apellido}}</li>
+
+
+        </ul>
+
+        <ul *ngIf="factura" class="list-group list-group text-dark mb-3">
+            
+
+            <li class="list-group-item list-group-item-primary">Datos de la factura</li>
+            <li class="list-group-item"><b>Id: </b>{{factura.id}}</li>
+            <li class="list-group-item"><b>Descripcion: </b>{{factura.descripcion}}</li>
+            <li class="list-group-item"><b>Fecha: </b>{{factura.createAt}}</li>
+
+        </ul>
+
+        <table class="table table-stripted table-hover table-bordered my-3">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let item of factura.items"> 
+                    <td>{{item.producto.codigo}}</td>
+                    <td>{{item.producto.nombre}}</td>
+                    <td>{{item.producto.precio}}</td>
+                    <td>{{item.cantidad}}</td>
+                    <td>{{item.importe}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="float-right">
+            Total: {{factura.total}}
+        </h3>
+
+        <div class="card border-info mb-4" style="max-width: 250px">
+            <div class="card card-header">
+            Observaciones
+        </div>
+        <div class="card card-body">
+            <p *ngIf="!factura.observacion">No tiene observacion</p>
+            <p *ngIf="factura.observacion">{{factura.observacion}}</p>
+        </div>
+    </div>
+    </div>
+</div>
